@@ -15,3 +15,9 @@ if __name__ == "__main__":
 
     parser.add_argument("-f", dest="location", action="store", required=True, type=str, help="format of input file is csv or txt")
     loader(parser.parse_args().location)
+##############################################
+conn = create_engine("sqlite:///actions.db")
+
+# load data from sqlite db
+df = pd.read_sql(sql="Choice", con=conn)
+df_new.to_sql(name="new_table", con=connector, if_exists="replace",index=False)
