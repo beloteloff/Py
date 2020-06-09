@@ -19,7 +19,7 @@ def zoning(ds):
         return 6
     else:
         return 0
-full_df=pd.DataFrame(D, columns=df.Sklad.unique(),index=df_base.Sklad.unique()).T
+full_df=pd.DataFrame(D, columns=df.Name.unique(),index=df_base.Name.unique()).T
 full_df=full_df.stack().reset_index(level=1, name='dist').rename(columns={'level_1':'Name_base'})[['dist','Name_base']].rename_axis('Name').reset_index()
 full_df=full_df[full_df['dist']<6].reset_index(drop=True)
 full_df['dist']=full_df['dist']*1000
